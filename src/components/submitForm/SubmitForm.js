@@ -1,18 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
-import {
-  Form,
-  Input,
-  InputNumber,
-  Table,
-  AddRowButton,
-  Checkbox,
-  SubmitButton,
-  ResetButton,
-} from 'formik-antd';
-import {
-  MailOutlined, UserOutlined, LinkOutlined, StarOutlined,
-} from '@ant-design/icons';
+import { Form, Input, SubmitButton } from 'formik-antd';
+import { MailOutlined, UserOutlined } from '@ant-design/icons';
 
 import getData from '../../api/Index';
 import './SubmitForm.scss';
@@ -29,12 +18,7 @@ const initState = {
 const initialValues = {
   name: '',
   password: '',
-  passConfir: '',
   email: '',
-  site: '',
-  age: null,
-  skills: [''],
-  acceptTerms: false,
 };
 
 class SubmitForm extends React.Component {
@@ -84,6 +68,7 @@ class SubmitForm extends React.Component {
         validationSchema={validationSchema}
       >
         <Form className="form">
+          <h2 className="header">Форма регистрации 2</h2>
           <div>
             <label htmlFor="name">
               Имя
@@ -114,20 +99,6 @@ class SubmitForm extends React.Component {
             </Form.Item>
           </div>
           <div>
-            <label htmlFor="passConfir">
-              Повторите пароль
-              <span className="required-star"> *</span>
-            </label>
-            <Form.Item name="passConfir">
-              <Input.Password
-                id="passConfir"
-                name="passConfir"
-                placeholder="My-password-123"
-                size="large"
-              />
-            </Form.Item>
-          </div>
-          <div>
             <label htmlFor="email">
               Почта
               <span className="required-star"> *</span>
@@ -143,76 +114,10 @@ class SubmitForm extends React.Component {
               />
             </Form.Item>
           </div>
-          <div>
-            <label htmlFor="site">Ваш сайт</label>
-            <Form.Item name="site">
-              <Input
-                id="site"
-                name="site"
-                placeholder="http://www.my-site.ru"
-                size="large"
-                suffix={<LinkOutlined />}
-              />
-            </Form.Item>
-          </div>
-          <div>
-            <label htmlFor="age">
-              Возраст
-              <span className="required-star"> *</span>
-            </label>
-            <Form.Item name="age">
-              <InputNumber id="age" name="age" placeholder="27" size="large" />
-            </Form.Item>
-          </div>
-          <div>
-            <Table
-              name="skills"
-              rowKey={(row) => `${row.id}`}
-              size="small"
-              pagination={false}
-              columns={[
-                {
-                  title: 'Skills',
-                  key: 'name',
-                  render: (text, record, i) => (
-                    <Input
-                      name={`skills[${i}]`}
-                      placeholder="Умею вкусно поесть"
-                      size="large"
-                      suffix={<StarOutlined />}
-                      autoFocus
-                    />
-                  ),
-                },
-              ]}
-            />
-            <AddRowButton
-              name="skills"
-              createNewRow={(text) => text || ''}
-              size="large"
-              type="primary"
-              className="skillsButton"
-              id="addSkill"
-            >
-              Добавить skill
-            </AddRowButton>
-          </div>
-          <div>
-            <Form.Item name="acceptTerms" shouldUpdate={false}>
-              <Checkbox id="acceptTerms" name="acceptTerms" />
-              <label htmlFor="acceptTerms">
-                <span> Согласен с условиями</span>
-                <span className="required-star"> *</span>
-              </label>
-            </Form.Item>
-          </div>
           <div className="formButtonsContainer">
             <SubmitButton disabled={false} size="large" className="button">
               Зарегистрироваться
             </SubmitButton>
-            <ResetButton size="large" className="button">
-              Очистить форму
-            </ResetButton>
           </div>
           <span className="success">{successMessageServer}</span>
           <span className="error">{errorMessageServer}</span>

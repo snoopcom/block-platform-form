@@ -1,13 +1,15 @@
-import React from 'react';
-import SubmitForm from '../submitForm/SubmitForm';
+// import React from 'react';
+// import SubmitForm from '../submitForm/SubmitForm';
 
 import './App.scss';
 
-const App = () => (
-  <div className="App">
-    <h2 className="header">Форма регистрации 2</h2>
-    <SubmitForm />
-  </div>
-);
+// import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+const App = () => {};
+/* <Router>
+    <div className="App">
+      <Route path="/SignUp" component={SubmitForm} />
+    </div>
+  </Router> */
 
 export default App;
