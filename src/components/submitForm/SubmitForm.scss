@@ -1,0 +1,71 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+//
+.form > div {
+  width: 80%;
+  max-width: 500px;
+}
+//
+.form input {
+  text-align: center;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  position: absolute;
+  bottom: 15px;
+  font-weight: bolder;
+}
+
+.errorEmail {
+  text-align: center;
+  color: red;
+  margin-left: 5px;
+}
+
+.success {
+  color: green;
+  margin-top: 15px;
+  position: absolute;
+  bottom: 15px;
+  font-weight: bolder;
+}
+
+.button {
+  width: 50%;
+}
+
+@media screen and (max-width: 545px) {
+  .button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+.skillsButton {
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: center;
+  align-self: center;
+  display: block;
+}
+
+.formButtonsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 545px) {
+  .formButtonsContainer {
+    display: block;
+  }
+}
+
+.required-star {
+  color: red;
+}
