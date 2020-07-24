@@ -1,15 +1,19 @@
-// import React from 'react';
-// import SubmitForm from '../submitForm/SubmitForm';
+/* import React from 'react';
+import Login from '../login/Login';
+import SignUp from '../signUp/SignUp';
+import Main from '../main/Main'; */
 
 import './App.scss';
 
-// import { BrowserRouter as Router, Route } from 'react-router-dom';
+// import { BrowserRouter, Route } from 'react-router-dom';
 
 const App = () => {};
-/* <Router>
+/* <BrowserRouter>
     <div className="App">
-      <Route path="/SignUp" component={SubmitForm} />
+      <Route path="/main" component={Main} />
+      <Route path="/signUp" component={SignUp} />
+      <Route path="/login" component={Login} />
     </div>
-  </Router> */
+  </BrowserRouter> */
 
 export default App;
