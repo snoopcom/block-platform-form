@@ -4,7 +4,7 @@ import { Form, Input, SubmitButton } from 'formik-antd';
 import { MailOutlined, UserOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 // import * as actions from '../../actions'; // ????
-import signUp from '../../actions'; // ????
+import signUp from '../../api/Index'; // ????
 // import { connect } from 'react-redux';
 
 import './SignUp.scss';
