@@ -1,17 +1,15 @@
 /* import React from 'react';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from '../../reducer';
+import store from '../../store';
 import Login from '../login/Login';
 import SignUp from '../signUp/SignUp';
 import Main from '../main/Main';
-import './App.scss'; */
+import './App.scss';
 
-// import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom'; */
 
-const App = () => {
-  /*
-  return (
+const App = () => {};
+/*  return (
     <Provider store={store}>
       <BrowserRouter>
         <div className="App">
@@ -21,7 +19,7 @@ const App = () => {
         </div>
       </BrowserRouter>
     </Provider>
-  ); */
-};
+  );
+*/
 
 export default App;

@@ -3,10 +3,11 @@ import { Formik } from 'formik';
 import { Form, Input, SubmitButton } from 'formik-antd';
 import { MailOutlined, UserOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+// import * as actions from '../../actions'; // ????
+import signUp from '../../actions'; // ????
+// import { connect } from 'react-redux';
 
-// import getData from '../../api/Index';
 import './SignUp.scss';
-// import * as actionCreators from '../../actionCreators';
 
 import validationSchema from './ValidationSchema';
 
@@ -18,15 +19,14 @@ const initialValues = {
 };
 
 const SignUp = () => {
-  const onSubmit = async (/* values, actions */) => {
-    /*  await SignUp(values);
-    await SignUp(values);
-    actions.setSubmitting(false); */
+  const onSubmit = (values /* actions */) => {
+    signUp(values);
   };
+
   return (
     <Formik onSubmit={onSubmit} initialValues={initialValues} validationSchema={validationSchema}>
       <Form className="form">
-        <h2 className="header">Форма регистрации 2</h2>
+        <h2 className="header">Форма регистрации</h2>
         <div>
           <label htmlFor="name">
             Имя
@@ -61,7 +61,7 @@ const SignUp = () => {
             Почта
             <span className="required-star"> *</span>
           </label>
-          <span className="errorEmail">{/* errorMailExists */}</span>
+          {/* <span className="errorEmail">{errorMailExists}</span> */}
           <Form.Item name="email">
             <Input
               id="email"
@@ -73,7 +73,13 @@ const SignUp = () => {
           </Form.Item>
         </div>
         <div className="formButtonsContainer">
-          <SubmitButton disabled={false} size="large" className="button">
+          <SubmitButton
+            loading={false}
+            disabled={false}
+            size="large"
+            shape="round"
+            className="button"
+          >
             Зарегистрироваться
           </SubmitButton>
         </div>
@@ -83,4 +89,9 @@ const SignUp = () => {
   );
 };
 
+/* const mapStateToProps = (state) => ({
+  user: state,
+}); */
+
+// export default connect(mapStateToProps, actions)(SignUp);
 export default SignUp;

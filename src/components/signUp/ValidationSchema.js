@@ -10,18 +10,7 @@ const validationSchema = Yup.object({
       'Введите от 8 до 40 символов, как минимум одна цифра и одна заглавная буква',
     )
     .required('Пожалуйста, введите пароль'),
-  passConfir: Yup.string()
-    .oneOf([Yup.ref('password'), null], 'Повторите пароль')
-    .required('Пароли не совподают'),
   email: Yup.string().email('Неккоретный email').required('Пожалуйста, введите почту'),
-  site: Yup.string().url('Неверный адрес сайта'),
-  age: Yup.number('Must be an integer')
-    .typeError('Введите Ваш возраст')
-    .min(18, 'Ваш возраст должнен быть от 18 до 65 лет')
-    .max(65, 'Ваш возраст должнен быть от 18 до 65 лет')
-    .required('Сколько Вам лет?'),
-  skills: Yup.array(),
-  acceptTerms: Yup.bool().required('Required').oneOf([true], 'Нужно Ваше согласие'),
 });
 
 export default validationSchema;
