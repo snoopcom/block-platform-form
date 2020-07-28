@@ -5,7 +5,7 @@ import { Form, Input, SubmitButton } from 'formik-antd';
 import { MailOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
-// import getData from '../../api/Index';
+// import { login } from '../../api/index';
 // import './SubmitForm.scss';
 
 import validationSchema from './ValidationSchema';
@@ -17,13 +17,29 @@ const initialValues = {
 };
 
 const Login = () => {
-  const onSubmit = async (/* values */) => {};
+  const onSubmit = (/* values */) => {
+    //   login(values);
+  };
 
   return (
     <Formik onSubmit={onSubmit} initialValues={initialValues} validationSchema={validationSchema}>
       <Form className="form">
         <h2 className="header">Login</h2>
-
+        <div>
+          <label htmlFor="email">
+            Почта
+            <span className="required-star"> *</span>
+          </label>
+          <Form.Item name="email">
+            <Input
+              id="email"
+              name="email"
+              placeholder="my@mail.ru"
+              size="large"
+              suffix={<MailOutlined />}
+            />
+          </Form.Item>
+        </div>
         <div>
           <label htmlFor="password">
             Пароль
@@ -35,22 +51,6 @@ const Login = () => {
               name="password"
               placeholder="My-password-123"
               size="large"
-            />
-          </Form.Item>
-        </div>
-        <div>
-          <label htmlFor="email">
-            Почта
-            <span className="required-star"> *</span>
-          </label>
-
-          <Form.Item name="email">
-            <Input
-              id="email"
-              name="email"
-              placeholder="my@mail.ru"
-              size="large"
-              suffix={<MailOutlined />}
             />
           </Form.Item>
         </div>

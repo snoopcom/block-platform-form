@@ -3,8 +3,8 @@ import { Provider } from 'react-redux';
 import store from '../../store';
 import Login from '../login/Login';
 import SignUp from '../signUp/SignUp';
-import Main from '../main/Main';
-import './App.scss'; */
+import Main from '../main/Main'; */
+import './App.scss';
 
 // import { BrowserRouter, Route } from 'react-router-dom';
 

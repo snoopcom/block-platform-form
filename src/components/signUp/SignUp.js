@@ -3,8 +3,8 @@ import { Formik } from 'formik';
 import { Form, Input, SubmitButton } from 'formik-antd';
 import { MailOutlined, UserOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-// import * as actions from '../../actions'; // ????
-import signUp from '../../api/Index'; // ????
+// import { signUp, signUpAction } from '../../api/index';
+
 // import { connect } from 'react-redux';
 
 import './SignUp.scss';
@@ -19,8 +19,9 @@ const initialValues = {
 };
 
 const SignUp = () => {
-  const onSubmit = (values /* actions */) => {
-    signUp(values);
+  const onSubmit = (/* values  actions */) => {
+    //  signUp(values);
+    //  signUpAction(values);
   };
 
   return (
@@ -89,9 +90,4 @@ const SignUp = () => {
   );
 };
 
-/* const mapStateToProps = (state) => ({
-  user: state,
-}); */
-
-// export default connect(mapStateToProps, actions)(SignUp);
 export default SignUp;
