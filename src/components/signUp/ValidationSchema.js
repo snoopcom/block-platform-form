@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
 const validationSchema = Yup.object({
-  name: Yup.string()
+  username: Yup.string()
     .max(50, 'Имя должно содержать не более 50 символов')
     .required('Пожалуйста, введите имя'),
   password: Yup.string()
