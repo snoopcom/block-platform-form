@@ -4,6 +4,7 @@ import { Form, Input, SubmitButton } from 'formik-antd';
 import { MailOutlined, UserOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { signUp /* signUpAction */ } from '../../api/Index';
+// import { signUp, signUpAction } from '../../api/index';
 
 // import { connect } from 'react-redux';
 
@@ -21,7 +22,6 @@ const initialValues = {
 const SignUp = () => {
   const onSubmit = async (values /* actions */) => {
     await signUp(values);
-    // signUpAction(values);
   };
 
   return (
