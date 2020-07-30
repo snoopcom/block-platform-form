@@ -1,8 +1,9 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { Form, SubmitButton } from 'formik-antd';
-
+import { connect } from 'react-redux';
 import './Main.scss';
+import * as index from '../../api/Index';
 
 /* поля, которые отправляются на сервер */
 const initialValues = {
@@ -11,8 +12,12 @@ const initialValues = {
   email: '',
 };
 
-const Main = () => {
-  const onSubmit = async () => {};
+const Main = (/* props */) => {
+  //  const { user } = props;
+
+  const onSubmit = async () => {
+    //  console.log(user);
+  };
   return (
     <div>
       <Formik onSubmit={onSubmit} initialValues={initialValues}>
@@ -33,4 +38,8 @@ const Main = () => {
   );
 };
 
-export default Main;
+const mapStateToProps = (state) => ({
+  user: state,
+});
+
+export default connect(mapStateToProps, index)(Main);

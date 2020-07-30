@@ -106,5 +106,17 @@
   "bugs": {
     "url": "https://github.com/snoopcom/form/issues"
   },
-  "import/order": ["error", {"groups": ["index", "sibling", "parent", "internal", "external", "builtin"]}]
+  "import/order": [
+    "error",
+    {
+      "groups": [
+        "index",
+        "sibling",
+        "parent",
+        "internal",
+        "external",
+        "builtin"
+      ]
+    }
+  ]
 }

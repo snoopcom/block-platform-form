@@ -4,10 +4,11 @@ import { Formik } from 'formik';
 import { Form, Input, SubmitButton } from 'formik-antd';
 import { MailOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-
+import { connect } from 'react-redux';
 import { login } from '../../api/Index';
+import logInAction from '../../store/action';
+import * as index from '../../api/Index';
 
-// import { login } from '../../api/index';
 // import './SubmitForm.scss';
 
 import validationSchema from './ValidationSchema';
@@ -18,9 +19,21 @@ const initialValues = {
   email: '',
 };
 
-const Login = () => {
+const Login = (/* props */) => {
+  // const { history } = props;
+
   const onSubmit = async (values) => {
+    const { email, password } = values;
+    // try {
     await login(values);
+    await logInAction(email, password);
+    /* values.loged = true; // ???
+      if (values.loged) {
+        history.push('/main');
+      }
+    } catch (err) {
+      alert('Неправильный логин или пароль');
+    } */
   };
 
   return (
@@ -67,4 +80,8 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => ({
+  user: state,
+});
+
+export default connect(mapStateToProps, index)(Login);
