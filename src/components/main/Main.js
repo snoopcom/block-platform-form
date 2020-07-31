@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import { Form, SubmitButton } from 'formik-antd';
 import { connect } from 'react-redux';
 import './Main.scss';
-import * as index from '../../api/Index';
+import * as actions from '../../store/actions';
 
 /* поля, которые отправляются на сервер */
 const initialValues = {
@@ -13,11 +13,8 @@ const initialValues = {
 };
 
 const Main = (/* props */) => {
-  //  const { user } = props;
-
-  const onSubmit = async () => {
-    //  console.log(user);
-  };
+  // const { user } = props;
+  const onSubmit = async () => {};
   return (
     <div>
       <Formik onSubmit={onSubmit} initialValues={initialValues}>
@@ -42,4 +39,4 @@ const mapStateToProps = (state) => ({
   user: state,
 });
 
-export default connect(mapStateToProps, index)(Main);
+export default connect(mapStateToProps, actions)(Main);

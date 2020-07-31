@@ -6,8 +6,8 @@ import { MailOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../api/Index';
-import logInAction from '../../store/action';
-import * as index from '../../api/Index';
+import logInAction from '../../store/actions';
+// import * as actions from '../../store/actions';
 
 // import './SubmitForm.scss';
 
@@ -20,20 +20,18 @@ const initialValues = {
 };
 
 const Login = (/* props */) => {
-  // const { history } = props;
+  // const { history, user } = props;
 
   const onSubmit = async (values) => {
     const { email, password } = values;
-    // try {
-    await login(values);
-    await logInAction(email, password);
-    /* values.loged = true; // ???
-      if (values.loged) {
-        history.push('/main');
-      }
+    try {
+      await login(values);
+      await logInAction(email, password);
+      // values.login = true; // ???
+      //  history.push('/main');
     } catch (err) {
       alert('Неправильный логин или пароль');
-    } */
+    }
   };
 
   return (
@@ -84,4 +82,4 @@ const mapStateToProps = (state) => ({
   user: state,
 });
 
-export default connect(mapStateToProps, index)(Login);
+export default connect(mapStateToProps, logInAction)(Login);
