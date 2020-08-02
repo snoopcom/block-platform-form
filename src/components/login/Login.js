@@ -1,5 +1,4 @@
 import React from 'react';
-// import { useDispatch } from 'react-redax';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { Form, Input, SubmitButton } from 'formik-antd';
@@ -8,9 +7,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../api/Index';
 import * as actions from '../../store/actions';
-
-// import './SubmitForm.scss';
-
 import validationSchema from './validationSchema';
 
 /* поля, которые отправляются на сервер */
