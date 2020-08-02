@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/block-platform-form/static/css/main.5c33e1e3.chunk.css",
-    "main.js": "/block-platform-form/static/js/main.055a132b.chunk.js",
-    "main.js.map": "/block-platform-form/static/js/main.055a132b.chunk.js.map",
+    "main.css": "/block-platform-form/static/css/main.7f03903f.chunk.css",
+    "main.js": "/block-platform-form/static/js/main.0cddc2c5.chunk.js",
+    "main.js.map": "/block-platform-form/static/js/main.0cddc2c5.chunk.js.map",
     "runtime-main.js": "/block-platform-form/static/js/runtime-main.518ec81a.js",
     "runtime-main.js.map": "/block-platform-form/static/js/runtime-main.518ec81a.js.map",
     "static/css/2.35fcc229.chunk.css": "/block-platform-form/static/css/2.35fcc229.chunk.css",
-    "static/js/2.45acded2.chunk.js": "/block-platform-form/static/js/2.45acded2.chunk.js",
-    "static/js/2.45acded2.chunk.js.map": "/block-platform-form/static/js/2.45acded2.chunk.js.map",
+    "static/js/2.cd44e692.chunk.js": "/block-platform-form/static/js/2.cd44e692.chunk.js",
+    "static/js/2.cd44e692.chunk.js.map": "/block-platform-form/static/js/2.cd44e692.chunk.js.map",
     "index.html": "/block-platform-form/index.html",
-    "precache-manifest.98910e6839b01c71985b805751aff661.js": "/block-platform-form/precache-manifest.98910e6839b01c71985b805751aff661.js",
+    "precache-manifest.c330e8c771fe4e2f97009377eb5ab704.js": "/block-platform-form/precache-manifest.c330e8c771fe4e2f97009377eb5ab704.js",
     "service-worker.js": "/block-platform-form/service-worker.js",
     "static/css/2.35fcc229.chunk.css.map": "/block-platform-form/static/css/2.35fcc229.chunk.css.map",
-    "static/css/main.5c33e1e3.chunk.css.map": "/block-platform-form/static/css/main.5c33e1e3.chunk.css.map",
-    "static/js/2.45acded2.chunk.js.LICENSE.txt": "/block-platform-form/static/js/2.45acded2.chunk.js.LICENSE.txt"
+    "static/css/main.7f03903f.chunk.css.map": "/block-platform-form/static/css/main.7f03903f.chunk.css.map",
+    "static/js/2.cd44e692.chunk.js.LICENSE.txt": "/block-platform-form/static/js/2.cd44e692.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.518ec81a.js",
     "static/css/2.35fcc229.chunk.css",
-    "static/js/2.45acded2.chunk.js",
-    "static/css/main.5c33e1e3.chunk.css",
-    "static/js/main.055a132b.chunk.js"
+    "static/js/2.cd44e692.chunk.js",
+    "static/css/main.7f03903f.chunk.css",
+    "static/js/main.0cddc2c5.chunk.js"
   ]
 }
