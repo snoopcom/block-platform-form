@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "744f7d7843c386d45c5c047e4e3c2c0b",
+    "revision": "6c3bfa878c43a74e184282e9eb52e983",
     "url": "/block-platform-form/index.html"
   },
   {
-    "revision": "c94744b7277c15bf5a41",
+    "revision": "f6c9a6375ecb91e03b57",
     "url": "/block-platform-form/static/css/2.35fcc229.chunk.css"
   },
   {
-    "revision": "a4f03a3961b0ddddf68a",
+    "revision": "3709755c2ed33637db7c",
     "url": "/block-platform-form/static/css/main.7f03903f.chunk.css"
   },
   {
-    "revision": "c94744b7277c15bf5a41",
-    "url": "/block-platform-form/static/js/2.cd44e692.chunk.js"
+    "revision": "f6c9a6375ecb91e03b57",
+    "url": "/block-platform-form/static/js/2.54599e9e.chunk.js"
   },
   {
     "revision": "cacaf3f01dd3bd8237006f7c58951c1c",
-    "url": "/block-platform-form/static/js/2.cd44e692.chunk.js.LICENSE.txt"
+    "url": "/block-platform-form/static/js/2.54599e9e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a4f03a3961b0ddddf68a",
-    "url": "/block-platform-form/static/js/main.0cddc2c5.chunk.js"
+    "revision": "3709755c2ed33637db7c",
+    "url": "/block-platform-form/static/js/main.337a0b7b.chunk.js"
   },
   {
     "revision": "bcb3ed69bb8e0b5dc91a",
