@@ -1,15 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Formik } from 'formik';
 import { Form, Input, SubmitButton } from 'formik-antd';
 import { MailOutlined, UserOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import { signUp /* signUpAction */ } from '../../api/Index';
+import { signUp } from '../../api/Index';
+import * as actions from '../../store/actions';
 
 // import { connect } from 'react-redux';
 
-import './SignUp.scss';
+import './signUp.scss';
 
-import validationSchema from './ValidationSchema';
+import validationSchema from './validationSchema';
 
 /* поля, которые отправляются на сервер */
 const initialValues = {
@@ -18,9 +21,11 @@ const initialValues = {
   email: '',
 };
 
-const SignUp = () => {
-  const onSubmit = async (values /* actions */) => {
+const SignUp = (props) => {
+  const { history } = props;
+  const onSubmit = async (values) => {
     await signUp(values);
+    history.push('/login');
   };
 
   return (
@@ -89,4 +94,12 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+SignUp.propTypes = {
+  history: PropTypes.objectOf.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  user: state,
+});
+
+export default connect(mapStateToProps, actions)(SignUp);
