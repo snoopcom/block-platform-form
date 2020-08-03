@@ -41,7 +41,9 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  history: PropTypes.objectOf.isRequired,
+  history: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.func, PropTypes.number, PropTypes.string, PropTypes.object]),
+  ).isRequired,
   user: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.bool])).isRequired,
   logOutAction: PropTypes.func.isRequired,
 };

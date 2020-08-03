@@ -3,7 +3,7 @@ import { HashRouter, Route } from 'react-router-dom';
 import Login from '../login/Login';
 import SignUp from '../signUp/SignUp';
 import Main from '../main/Main';
-import './app.scss';
+import './App.scss';
 
 const App = () => (
   <HashRouter>

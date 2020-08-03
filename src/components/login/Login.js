@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../api/Index';
 import * as actions from '../../store/actions';
-import validationSchema from './validationSchema';
+import validationSchema from './ValidationSchema';
 
 /* поля, которые отправляются на сервер */
 const initialValues = {
@@ -76,7 +76,9 @@ const Login = (props) => {
 };
 
 Login.propTypes = {
-  history: PropTypes.objectOf.isRequired,
+  history: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.func, PropTypes.number, PropTypes.string, PropTypes.object]),
+  ).isRequired,
   logInAction: PropTypes.func.isRequired,
 };
 
