@@ -5,7 +5,7 @@ import { Form, Input, SubmitButton } from 'formik-antd';
 import { MailOutlined, UserOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { signUp } from '../../api/Index';
-import './SignUp.scss';
+// import './SignUp.scss';
 
 import validationSchema from './ValidationSchema';
 
@@ -72,17 +72,14 @@ const SignUp = (props) => {
           </Form.Item>
         </div>
         <div className="formButtonsContainer">
-          <SubmitButton
-            loading={false}
-            disabled={false}
-            size="large"
-            shape="round"
-            className="button"
-          >
+          <SubmitButton loading={false} disabled={false} size="large" className="button">
             Зарегистрироваться
           </SubmitButton>
         </div>
-        <Link to="/login">Login</Link>
+        <div className="linkContainer">
+          <span>Уже зарегистрировались? </span>
+          <Link to="/login">Войти</Link>
+        </div>
       </Form>
     </Formik>
   );

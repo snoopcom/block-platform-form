@@ -34,7 +34,7 @@ const Login = (props) => {
   return (
     <Formik onSubmit={onSubmit} initialValues={initialValues} validationSchema={validationSchema}>
       <Form className="form">
-        <h2 className="header">Login</h2>
+        <h2>Вход</h2>
         <div>
           <label htmlFor="email">
             Почта
@@ -69,7 +69,9 @@ const Login = (props) => {
             Войти
           </SubmitButton>
         </div>
-        <Link to="/signUp">Регистрация</Link>
+        <div className="linkContainer">
+          <Link to="/signUp">Регистрация</Link>
+        </div>
       </Form>
     </Formik>
   );

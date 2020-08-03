@@ -17,3 +17,48 @@
 .header {
   text-align: center;
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form > div {
+  width: 80%;
+  max-width: 500px;
+}
+
+.button {
+  margin: 0 auto;
+  width: 50%;
+}
+
+@media screen and (max-width: 545px) {
+  .button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+.formButtonsContainer {
+  display: flex;
+}
+
+@media screen and (max-width: 545px) {
+  .formButtonsContainer {
+    display: block;
+  }
+}
+
+.required-star {
+  color: red;
+}
+
+.linkContainer {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}

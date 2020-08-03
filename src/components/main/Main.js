@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { Form, SubmitButton } from 'formik-antd';
 import { connect } from 'react-redux';
-import './Main.scss';
 import * as actions from '../../store/actions';
 
 /* поля, которые отправляются на сервер */
