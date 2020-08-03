@@ -19,7 +19,7 @@ export const signUp = async ({ username, email, password }) => {
 };
 
 /* запрос на авторизацию */
-export const login = ({ email, password }) => axios.post('/users/login', {
+export const login = async ({ email, password }) => axios.post('/users/login', {
   user: {
     email,
     password,
