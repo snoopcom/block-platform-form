@@ -17,6 +17,9 @@ const initialValues = {
 
 const Login = (props) => {
   const { history, logInAction } = props;
+  const token = localStorage.getItem('token');
+
+  console.log(token);
 
   const onSubmit = async (values) => {
     const { email, password } = values;

@@ -2,6 +2,18 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://conduit.productionready.io/api/';
 
+// /* получение токена */
+// export const getToken = async ({ email, password }) => {
+//   const response = await axios.post('/users/login', {
+//     user: {
+//       email,
+//       password,
+//     },
+//   });
+//   const { data } = response;
+//   localStorage.setItem('token', data.user.token);
+// };
+
 /* запрос на регистрацию */
 export const signUp = async ({ username, email, password }) => {
   try {
@@ -19,9 +31,13 @@ export const signUp = async ({ username, email, password }) => {
 };
 
 /* запрос на авторизацию */
-export const login = async ({ email, password }) => axios.post('/users/login', {
-  user: {
-    email,
-    password,
-  },
-});
+export const login = async ({ email, password }) => {
+  const response = await axios.post('/users/login', {
+    user: {
+      email,
+      password,
+    },
+  });
+  const { data } = response;
+  localStorage.setItem('token', data.user.token);
+};

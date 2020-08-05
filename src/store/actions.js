@@ -1,6 +1,6 @@
 export const logInAction = (email, password) => ({
   type: 'LOGIN',
-  profile: { email, password },
+  payload: { email, password },
 });
 
 /* выйти из профиля */
