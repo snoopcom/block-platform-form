@@ -14,8 +14,8 @@ const initialValues = {
 };
 
 const SignUp = () => {
-  const onSubmit = async (values) => {
-    await signUp(values);
+  const onSubmit = (values) => {
+    signUp(values);
   };
 
   return (

@@ -14,7 +14,6 @@ const initialValues = {
 
 const Main = (props) => {
   const { user, history, logOutAction } = props;
-  console.log(user);
   useEffect(() => {
     if (!user.login) {
       history.push('/login');
