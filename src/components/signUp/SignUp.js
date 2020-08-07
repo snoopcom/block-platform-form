@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import { Form, Input, SubmitButton } from 'formik-antd';
 import { MailOutlined, UserOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import { signUp } from '../../api/Index';
+import { registration } from '../../api/Index';
 import validationSchema from './ValidationSchema';
 
 /* поля, которые отправляются на сервер */
@@ -15,7 +15,7 @@ const initialValues = {
 
 const SignUp = () => {
   const onSubmit = (values) => {
-    signUp(values);
+    registration(values);
   };
 
   return (

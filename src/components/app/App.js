@@ -1,16 +1,16 @@
-import React from 'react';
+import React /* { useEffect } */ from 'react';
 import { HashRouter, Route } from 'react-router-dom';
 import Login from '../login/Login';
 import SignUp from '../signUp/SignUp';
 import Main from '../main/Main';
-import { getToken } from '../../api/Index';
+// import { access } from '../../api/Index';
 import './App.scss';
 
 const App = () => {
   // useEffect(() => {
-  //   getProfileFetch();
-  // });
-  getToken();
+  //   access();
+  // }, []);
+  console.log('hello');
   return (
     <HashRouter>
       <div className="App">
@@ -23,3 +23,4 @@ const App = () => {
 };
 
 export default App;
+//
