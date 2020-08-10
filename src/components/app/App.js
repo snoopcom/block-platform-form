@@ -1,16 +1,15 @@
-import React /* { useEffect } */ from 'react';
+import React, { useEffect } from 'react';
 import { HashRouter, Route } from 'react-router-dom';
 import Login from '../login/Login';
 import SignUp from '../signUp/SignUp';
 import Main from '../main/Main';
-// import { access } from '../../api/Index';
+import { access } from '../../api/Index';
 import './App.scss';
 
 const App = () => {
-  // useEffect(() => {
-  //   access();
-  // }, []);
-  console.log('hello');
+  useEffect(() => {
+    access();
+  }, []);
   return (
     <HashRouter>
       <div className="App">
