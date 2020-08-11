@@ -1,5 +1,5 @@
 import axios from 'axios';
-import routes from '../routes';
+// import routes from '../routes';
 
 const api = axios.create({
   baseURL: 'https://conduit.productionready.io/api/',
@@ -18,23 +18,34 @@ export const login = async (user) => {
 };
 
 export const access = async () => {
-  const { token } = localStorage;
-  if (!token) {
-    return;
-  }
-  try {
-    axios.interceptors.request.use((req) => {
-      req.headers.Authorization = `Token ${token}`;
-      return req;
-    });
-    const url = routes.getProfileUrl();
-    const response = await axios.get(url);
-    const { data } = response;
-    login(data.user);
-    // console.log(data.user);
-  } catch (error) {
-    // if (error.response.status === 401) {
-    //   localStorage.removeItem('token');
-    // }
-  }
+  axios.interceptors.request.use((req) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const userConfig = req;
+      userConfig.headers.Authorization = `Token ${token}`;
+      return userConfig;
+    }
+    return req;
+  });
 };
+// export const access = async () => {
+//   const { token } = localStorage;
+//   if (!token) {
+//     return;
+//   }
+//   try {
+//     axios.interceptors.request.use((req) => {
+//       req.headers.Authorization = `Token ${token}`;
+//       return req;
+//     });
+//     const url = routes.getProfileUrl();
+//     const response = await axios.get(url);
+//     const { data } = response;
+//     login(data.user);
+//     // console.log(data.user);
+//   } catch (error) {
+//     // if (error.response.status === 401) {
+//     //   localStorage.removeItem('token');
+//     // }
+//   }
+// };
