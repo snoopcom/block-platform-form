@@ -1,15 +1,23 @@
 import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { HashRouter, Route } from 'react-router-dom';
 import Login from '../login/Login';
 import SignUp from '../signUp/SignUp';
 import Main from '../main/Main';
-import { access } from '../../api/Index';
+import * as actions from '../../store/actions';
 import './App.scss';
+import historyObj from '../../history';
 
-const App = () => {
+const App = (/* { getUser } */) => {
+  const logAccount = async () => {
+    // await getUser();
+    historyObj.back();
+  };
+
   useEffect(() => {
-    access();
+    logAccount();
   }, []);
+
   return (
     <HashRouter>
       <div className="App">
@@ -21,5 +29,4 @@ const App = () => {
   );
 };
 
-export default App;
-//
+export default connect(null, actions)(App);
