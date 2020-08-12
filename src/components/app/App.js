@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { HashRouter, Route } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import Login from '../login/Login';
 import SignUp from '../signUp/SignUp';
 import Main from '../main/Main';
@@ -10,8 +10,13 @@ import historyObj from '../../history';
 
 const App = (/* { getUser } */) => {
   const logAccount = async () => {
-    // await getUser();
-    historyObj.back();
+    const token = localStorage.getItem('token');
+    if (token === null) {
+      historyObj.go(-1);
+    }
+    if (token) {
+      // await getUser();
+    }
   };
 
   useEffect(() => {
@@ -20,11 +25,13 @@ const App = (/* { getUser } */) => {
 
   return (
     <HashRouter>
-      <div className="App">
-        <Route path="/" exact component={Main} />
-        <Route path="/signUp" component={SignUp} />
-        <Route path="/login" component={Login} />
-      </div>
+      <Switch>
+        <div className="App">
+          <Route path="/signUp" component={SignUp} />
+          <Route path="/login" component={Login} />
+          <Route path="/" exact component={Main} />
+        </div>
+      </Switch>
     </HashRouter>
   );
 };

@@ -3,9 +3,6 @@
 //   payload: { email },
 // });
 
-// /* выйти из профиля */
-// export const logOutAction = () => ({ type: 'LOGOUT' });
-
 import { createAction } from 'redux-actions';
 import { userRequest, loginRequest } from '../api/Index';
 
@@ -17,11 +14,15 @@ export const setLoginRequest = createAction('STATUS_SIGNUP_REQUEST');
 export const setLoginSuccess = createAction('STATUS_SIGNUP_SUCCESS');
 export const setLoginFailure = createAction('STATUS_SIGNUP_FAILURE');
 
+/* выйти из профиля */
+export const logOutAction = () => ({ type: 'LOGOUT' });
+
 export const getUser = () => async (dispatch) => {
   dispatch(setUserRequest());
   try {
     const response = await userRequest();
     dispatch(setUserSuccess(response.data));
+    localStorage.setItem('user', JSON.stringify(response.data.user));
     return response;
   } catch (error) {
     dispatch(setUserFailure());
@@ -34,6 +35,7 @@ export const authorization = (values) => async (dispatch) => {
   try {
     const response = await loginRequest(values);
     dispatch(setLoginSuccess(response.data));
+    localStorage.setItem('user', JSON.stringify(response.data.user));
     return response;
   } catch (error) {
     dispatch(setLoginFailure());

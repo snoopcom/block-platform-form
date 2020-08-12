@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { Form, SubmitButton } from 'formik-antd';
@@ -13,22 +14,24 @@ const initialValues = {
 };
 
 const Main = (/* props */) => {
-  // const { user, logOutAction } = props;
-  console.log(localStorage);
-  // useEffect(() => {
-  //   if (!user.login) {
-  //     history.push('/login');
-  //   }
-  // });
+  const history = useHistory();
+  // const { /*logOutAction */} = props;
+
+  let user = JSON.parse(localStorage.getItem('user'));
+  if (user === null) {
+    user = '';
+  }
   const onSubmit = () => {
     // logOutAction();
+    history.push('/login');
   };
+
   return (
     <div>
       <Formik onSubmit={onSubmit} initialValues={initialValues}>
         <Form className="form">
           <h2 className="header">Привет !</h2>
-          {/* <h3 className="header">{user.email}</h3> */}
+          <h3 className="header">{user.email}</h3>
           <div className="formButtonsContainer">
             <SubmitButton disabled={false} size="large" className="button">
               Выход
