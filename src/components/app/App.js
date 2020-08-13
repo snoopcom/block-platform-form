@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import {
+  HashRouter, Route, Switch, Redirect,
+} from 'react-router-dom';
 import Login from '../login/Login';
 import SignUp from '../signUp/SignUp';
 import Main from '../main/Main';
@@ -26,13 +28,14 @@ const App = ({ getUser }) => {
 
   return (
     <HashRouter>
-      <Switch>
-        <div className="App">
+      <div className="App">
+        <Switch>
           <Route path="/signUp" component={SignUp} />
           <Route path="/login" component={Login} />
           <Route path="/" exact component={Main} />
-        </div>
-      </Switch>
+          <Redirect to="/login" />
+        </Switch>
+      </div>
     </HashRouter>
   );
 };

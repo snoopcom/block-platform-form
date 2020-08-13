@@ -23,6 +23,7 @@ const Main = (props) => {
   }
   const onSubmit = () => {
     logOutAction();
+    localStorage.removeItem('token');
     history.push('/login');
   };
 

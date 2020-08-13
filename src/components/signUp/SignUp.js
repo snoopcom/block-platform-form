@@ -18,7 +18,7 @@ const SignUp = () => {
 
   const onSubmit = (values) => {
     signUpRequest(values);
-    history.push('/');
+    history.push('/login');
   };
 
   return (

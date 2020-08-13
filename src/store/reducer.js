@@ -17,10 +17,12 @@ export default reducer;
 // import { handleAction } from 'redux-actions';
 // import * as actions from './actions';
 
-// const defaultState = {};
+// const defaultState = {
+//   user: '',
+// };
 // const reducer = handleAction(
 //   {
-//     [actions.logInAction]: (state, action) => ({ ...state, ...action.payload }),
+//     [actions.logInAction]: (state, action) => action.payload,
 //   },
 //   defaultState,
 // );
