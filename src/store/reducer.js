@@ -1,16 +1,30 @@
-const initState = {
-  login: false,
-};
+const initState = {};
 
 const reducer = (state = initState, action) => {
   switch (action.type) {
     case 'LOGIN':
-      return { ...state, ...action.payload, login: true };
+      return { ...state, ...action.payload };
     case 'LOGOUT':
-      return { ...state, login: false };
+      return { ...state };
     default:
       return state;
   }
 };
 
 export default reducer;
+
+// import { combineReducers } from 'redux';
+// import { handleAction } from 'redux-actions';
+// import * as actions from './actions';
+
+// const defaultState = {};
+// const reducer = handleAction(
+//   {
+//     [actions.logInAction]: (state, action) => ({ ...state, ...action.payload }),
+//   },
+//   defaultState,
+// );
+
+// export default combineReducers({
+//   reducer,
+// });

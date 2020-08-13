@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link /* useHistory */ } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { Form, Input, SubmitButton } from 'formik-antd';
@@ -7,12 +7,6 @@ import { MailOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 import validationSchema from './ValidationSchema';
-
-/* поля, которые отправляются на сервер */
-const initialValues = {
-  email: '',
-  password: '',
-};
 
 // const Login = (props) => {
 //   const { history, logInAction } = props;
@@ -29,14 +23,22 @@ const initialValues = {
 //     alert('Неправильный логин или пароль');
 //   }
 // };
-const Login = (/* { authorization } */) => {
-  // const history = useHistory();
+
+/* поля, которые отправляются на сервер */
+const initialValues = {
+  email: '',
+  password: '',
+};
+
+const Login = (/* { authorization, logInAction } */) => {
+  const history = useHistory();
 
   const onSubmit = async (/* values */) => {
+    // logInAction(values.email);
     // const response = await authorization(values);
     // const { token } = response.data.user;
     // localStorage.setItem('token', `${token}`);
-    // history.push('/');
+    history.push('/');
   };
 
   return (
@@ -92,8 +94,10 @@ const Login = (/* { authorization } */) => {
 //   logInAction: PropTypes.func.isRequired,
 // };
 
+// Эта функция, берет нужные данные из контейнера(store) и отдаёт их компоненту Login
 const mapStateToProps = (state) => ({
   user: state,
 });
 
+// connect соединяет контейнер с текущим компонентом
 export default connect(mapStateToProps, actions)(Login);

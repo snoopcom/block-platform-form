@@ -15,11 +15,12 @@ const initialValues = {
 
 const Main = (/* props */) => {
   const history = useHistory();
-  // const { /*logOutAction */} = props;
+  // const { logOutAction, user } = props;
+  // console.log(user.email);
 
-  let user = JSON.parse(localStorage.getItem('user'));
-  if (user === null) {
-    user = '';
+  let data = JSON.parse(localStorage.getItem('user'));
+  if (data === null) {
+    data = '';
   }
   const onSubmit = () => {
     // logOutAction();
@@ -31,7 +32,7 @@ const Main = (/* props */) => {
       <Formik onSubmit={onSubmit} initialValues={initialValues}>
         <Form className="form">
           <h2 className="header">Привет !</h2>
-          <h3 className="header">{user.email}</h3>
+          <h3 className="header">{data.email}</h3>
           <div className="formButtonsContainer">
             <SubmitButton disabled={false} size="large" className="button">
               Выход
