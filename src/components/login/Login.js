@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { Form, Input, SubmitButton } from 'formik-antd';
 import { MailOutlined } from '@ant-design/icons';
@@ -30,14 +30,14 @@ const initialValues = {
   password: '',
 };
 
-const Login = (/* { authorization, logInAction } */) => {
+const Login = ({ authorization, logInAction }) => {
   const history = useHistory();
 
-  const onSubmit = async (/* values */) => {
-    // logInAction(values.email);
-    // const response = await authorization(values);
-    // const { token } = response.data.user;
-    // localStorage.setItem('token', `${token}`);
+  const onSubmit = async (values) => {
+    logInAction(values.email);
+    const response = await authorization(values);
+    const { token } = response.data.user;
+    localStorage.setItem('token', `${token}`);
     history.push('/');
   };
 
@@ -87,12 +87,10 @@ const Login = (/* { authorization, logInAction } */) => {
   );
 };
 
-// Login.propTypes = {
-//   history: PropTypes.objectOf(
-//     PropTypes.oneOfType([PropTypes.func, PropTypes.number, PropTypes.string, PropTypes.object]),
-//   ).isRequired,
-//   logInAction: PropTypes.func.isRequired,
-// };
+Login.propTypes = {
+  authorization: PropTypes.func.isRequired,
+  logInAction: PropTypes.func.isRequired,
+};
 
 // Эта функция, берет нужные данные из контейнера(store) и отдаёт их компоненту Login
 const mapStateToProps = (state) => ({

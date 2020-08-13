@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { Form, SubmitButton } from 'formik-antd';
 import { connect } from 'react-redux';
@@ -13,17 +13,16 @@ const initialValues = {
   email: '',
 };
 
-const Main = (/* props */) => {
+const Main = (props) => {
   const history = useHistory();
-  // const { logOutAction, user } = props;
-  // console.log(user.email);
+  const { logOutAction } = props;
 
   let data = JSON.parse(localStorage.getItem('user'));
   if (data === null) {
     data = '';
   }
   const onSubmit = () => {
-    // logOutAction();
+    logOutAction();
     history.push('/login');
   };
 
@@ -44,13 +43,9 @@ const Main = (/* props */) => {
   );
 };
 
-// Main.propTypes = {
-//   history: PropTypes.objectOf(
-//     PropTypes.oneOfType([PropTypes.func, PropTypes.number, PropTypes.string, PropTypes.object]),
-//   ).isRequired,
-//   user: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.bool])).isRequired,
-//   logOutAction: PropTypes.func.isRequired,
-// };
+Main.propTypes = {
+  logOutAction: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   user: state,

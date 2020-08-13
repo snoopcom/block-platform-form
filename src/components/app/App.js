@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import Login from '../login/Login';
@@ -8,14 +9,14 @@ import * as actions from '../../store/actions';
 import './App.scss';
 import historyObj from '../../history';
 
-const App = (/* { getUser } */) => {
+const App = ({ getUser }) => {
   const logAccount = async () => {
     const token = localStorage.getItem('token');
     if (token === null) {
       historyObj.go(-1);
     }
     if (token) {
-      // await getUser();
+      await getUser();
     }
   };
 
@@ -34,6 +35,10 @@ const App = (/* { getUser } */) => {
       </Switch>
     </HashRouter>
   );
+};
+
+App.propTypes = {
+  getUser: PropTypes.func.isRequired,
 };
 
 export default connect(null, actions)(App);

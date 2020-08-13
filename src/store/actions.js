@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import { userRequest, loginRequest /* signUpRequest */ } from '../api/Index';
+import { userRequest, loginRequest, signUpRequest } from '../api/Index';
 
 // Функция createAction принимает тип действия
 // (свойство type) и возвращает функцию, принимающую payload:
@@ -44,17 +44,16 @@ export const authorization = (values) => async (dispatch) => {
   }
 };
 
-export const registration = (/* values */) => async (/* dispatch */) => {
-  // dispatch(setSignUpRequest());
-  // try {
-  //   const response = await signUpRequest(values);
-  //   // if (response.status === 200) {
-  //   //   dispatch(setLoginSuccess(response.data));
-  //   // }
-  //   return response;
-  // } catch (error) {
-  //   dispatch(setUserFailure());
-  // }
+export const registration = (values) => async (dispatch) => {
+  dispatch(setSignUpRequest());
+  try {
+    const response = await signUpRequest(values);
+    dispatch(setSignUpSuccess(response.data));
+    return response;
+  } catch (error) {
+    dispatch(setUserFailure());
+    throw error;
+  }
 };
 
 // export const logInAction = (email) => ({
