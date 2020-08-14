@@ -15,13 +15,13 @@ api.interceptors.request.use((req) => {
   return req;
 });
 
-export const userRequest = () => {
+export const userRequest = async () => {
   const url = `${baseUrl}user`;
-  const response = api.get(url);
+  const response = await api.get(url);
   return response;
 };
 
-export const loginRequest = (values) => {
+export const loginRequest = async (values) => {
   const { email, password } = values;
   const data = {
     user: {
@@ -31,11 +31,11 @@ export const loginRequest = (values) => {
   };
 
   const url = `${baseUrl}users/login`;
-  const response = axios.post(url, data);
+  const response = await axios.post(url, data);
   return response;
 };
 
-export const signUpRequest = (values) => {
+export const signUpRequest = async (values) => {
   const { username, email, password } = values;
   const data = {
     user: {
@@ -45,18 +45,6 @@ export const signUpRequest = (values) => {
     },
   };
   const url = `${baseUrl}users`;
-  const response = axios.post(url, data);
+  const response = await axios.post(url, data);
   return response;
 };
-
-// export const signUpRequest = async (user) => {
-//   const response = await api.post('/users', { user });
-//   return response.data.user;
-// };
-
-// export const login = async (user) => {
-//   const response = await api.post('/users/login', { user });
-//   const { data } = response;
-//   localStorage.setItem('token', data.user.token);
-//   return response.data.user;
-// };

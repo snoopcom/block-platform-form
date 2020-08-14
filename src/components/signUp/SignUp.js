@@ -16,9 +16,19 @@ const initialValues = {
 const SignUp = () => {
   const history = useHistory();
 
-  const onSubmit = (values) => {
-    signUpRequest(values);
-    history.push('/login');
+  const onSubmit = async (values) => {
+    try {
+      await signUpRequest(values);
+      history.push('/login');
+      alert('Вы успешно зарегистрировались!');
+    } catch (error) {
+      if (error.request.status === 422) {
+        alert('Такой пользователь уже существует');
+      }
+      if (error.request.status === 0) {
+        alert(':( неполадки с сетью');
+      }
+    }
   };
 
   return (

@@ -1,32 +1,56 @@
-const initState = {};
+import { combineReducers } from 'redux';
+import { handleActions } from 'redux-actions';
+import * as actions from './actions';
 
-const reducer = (state = initState, action) => {
-  switch (action.type) {
-    case 'LOGIN':
-      return { ...state, ...action.payload };
-    case 'LOGOUT':
-      return { ...state };
-    default:
-      return state;
-  }
-};
+const userReducer = handleActions(
+  {
+    [actions.logOutAction]: () => {},
+    [actions.logAction]: (state, action) => action.payload,
+  },
+  {},
+);
 
-export default reducer;
-
-// import { combineReducers } from 'redux';
-// import { handleAction } from 'redux-actions';
-// import * as actions from './actions';
-
-// const defaultState = {
-//   user: '',
-// };
-// const reducer = handleAction(
+// const username = handleActions(
 //   {
-//     [actions.logInAction]: (state, action) => action.payload,
+//     [actions.setUserSuccess]: (state, { payload: login }) => {
+//       return login.user.username;
+//     },
+//     [actions.setSignUpSuccess]: (state, { payload: login }) => {
+//       return login.user.username;
+//     },
+//     [actions.setLoginSuccess]: (state, { payload: login }) => {
+//       return login.user.username;
+//     },
 //   },
-//   defaultState,
+//   '',
 // );
 
-// export default combineReducers({
-//   reducer,
-// });
+// const isAuth = handleActions(
+//   {
+//     [actions.setLoginSuccess]: () => {
+//       return true;
+//     },
+//     [actions.setSignUpSuccess]: () => {
+//       return true;
+//     },
+//     [actions.setUserSuccess]: () => {
+//       return true;
+//     },
+//     [actions.setLoginFailure]: () => {
+//       return false;
+//     },
+//     [actions.setSignUpFailure]: () => {
+//       return false;
+//     },
+//     [actions.setUserFailure]: () => {
+//       return false;
+//     },
+//   },
+//   false,
+// );
+
+export default combineReducers({
+  userReducer,
+  // isAuth,
+  // username,
+});

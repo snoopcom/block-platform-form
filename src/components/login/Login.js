@@ -1,28 +1,11 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { Form, Input, SubmitButton } from 'formik-antd';
 import { MailOutlined } from '@ant-design/icons';
-import { connect } from 'react-redux';
-import * as actions from '../../store/actions';
+import { useDispatch } from 'react-redux';
+import { authorization, logAction } from '../../store/actions';
 import validationSchema from './ValidationSchema';
-
-// const Login = (props) => {
-//   const { history, logInAction } = props;
-
-// const onSubmit = async (values) => {
-//   const { email, password } = values;
-//   const userLogin = values;
-//   try {
-//     await login(values);
-//     await logInAction(email, password);
-//     userLogin.login = true;
-//     history.push('/');
-//   } catch (err) {
-//     alert('Неправильный логин или пароль');
-//   }
-// };
 
 /* поля, которые отправляются на сервер */
 const initialValues = {
@@ -30,14 +13,17 @@ const initialValues = {
   password: '',
 };
 
-const Login = ({ authorization, logInAction }) => {
+const Login = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const onSubmit = async (values) => {
-    logInAction(values.email);
-    const response = await authorization(values);
+    dispatch(logAction(values));
+    const response = await dispatch(authorization(values));
     const { token } = response.data.user;
     localStorage.setItem('token', `${token}`);
+    // сделал, чтобы при удалении стореджа и перезагрузке страницы не вылетало со страницы main
+    localStorage.setItem('user', JSON.stringify(response.data.user));
     history.push('/');
   };
 
@@ -87,15 +73,4 @@ const Login = ({ authorization, logInAction }) => {
   );
 };
 
-Login.propTypes = {
-  authorization: PropTypes.func.isRequired,
-  logInAction: PropTypes.func.isRequired,
-};
-
-// Эта функция, берет нужные данные из контейнера(store) и отдаёт их компоненту Login
-const mapStateToProps = (state) => ({
-  user: state,
-});
-
-// connect соединяет контейнер с текущим компонентом
-export default connect(mapStateToProps, actions)(Login);
+export default Login;

@@ -1,9 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { Form, SubmitButton } from 'formik-antd';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../store/actions';
 
 /* поля, которые отправляются на сервер */
@@ -13,16 +12,27 @@ const initialValues = {
   email: '',
 };
 
-const Main = (props) => {
+const Main = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
-  const { logOutAction } = props;
+  const userReducer = useSelector((state) => state.userReducer);
 
-  let data = JSON.parse(localStorage.getItem('user'));
-  if (data === null) {
-    data = '';
+  let { email } = userReducer;
+  let data;
+
+  try {
+    data = JSON.parse(localStorage.getItem('user'));
+    if (email === undefined) {
+      email = data.email;
+    }
+  } catch (error) {
+    if (data === null) {
+      history.push('/login');
+    }
   }
+
   const onSubmit = () => {
-    logOutAction();
+    dispatch(actions.logOutAction());
     localStorage.removeItem('token');
     history.push('/login');
   };
@@ -32,7 +42,7 @@ const Main = (props) => {
       <Formik onSubmit={onSubmit} initialValues={initialValues}>
         <Form className="form">
           <h2 className="header">Привет !</h2>
-          <h3 className="header">{data.email}</h3>
+          <h3 className="header">{email}</h3>
           <div className="formButtonsContainer">
             <SubmitButton disabled={false} size="large" className="button">
               Выход
@@ -44,12 +54,4 @@ const Main = (props) => {
   );
 };
 
-Main.propTypes = {
-  logOutAction: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  user: state,
-});
-
-export default connect(mapStateToProps, actions)(Main);
+export default Main;
