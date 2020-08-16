@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Formik } from 'formik';
 import { Form, SubmitButton } from 'formik-antd';
 import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../store/actions';
+import { isInactive, logOutAction } from '../../store/actions';
 
 /* поля, которые отправляются на сервер */
 const initialValues = {
@@ -32,7 +32,8 @@ const Main = () => {
   }
 
   const onSubmit = () => {
-    dispatch(actions.logOutAction());
+    dispatch(isInactive());
+    dispatch(logOutAction());
     localStorage.removeItem('token');
     history.push('/login');
   };
@@ -44,7 +45,7 @@ const Main = () => {
           <h2 className="header">Привет !</h2>
           <h3 className="header">{email}</h3>
           <div className="formButtonsContainer">
-            <SubmitButton disabled={false} size="large" className="button">
+            <SubmitButton size="large" className="button">
               Выход
             </SubmitButton>
           </div>

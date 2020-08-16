@@ -3,8 +3,10 @@ import { Formik } from 'formik';
 import { Form, Input, SubmitButton } from 'formik-antd';
 import { MailOutlined, UserOutlined } from '@ant-design/icons';
 import { Link, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { signUpRequest } from '../../api/Index';
 import validationSchema from './ValidationSchema';
+import { isActive, logAction, isInactive } from '../../store/actions';
 
 /* поля, которые отправляются на сервер */
 const initialValues = {
@@ -14,18 +16,24 @@ const initialValues = {
 };
 
 const SignUp = () => {
+  const buttonReducer = useSelector((state) => state.buttonReducer);
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const onSubmit = async (values) => {
     try {
+      dispatch(isActive());
+      dispatch(logAction(values));
       await signUpRequest(values);
-      history.push('/login');
+      history.push('/');
       alert('Вы успешно зарегистрировались!');
     } catch (error) {
       if (error.request.status === 422) {
+        dispatch(isInactive());
         alert('Такой пользователь уже существует');
       }
       if (error.request.status === 0) {
+        dispatch(isInactive());
         alert(':( неполадки с сетью');
       }
     }
@@ -80,7 +88,7 @@ const SignUp = () => {
           </Form.Item>
         </div>
         <div className="formButtonsContainer">
-          <SubmitButton loading={false} disabled={false} size="large" className="button">
+          <SubmitButton loading={false} disabled={buttonReducer} size="large" className="button">
             Зарегистрироваться
           </SubmitButton>
         </div>

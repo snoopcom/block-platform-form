@@ -3,8 +3,10 @@ import { Link, useHistory } from 'react-router-dom';
 import { Formik } from 'formik';
 import { Form, Input, SubmitButton } from 'formik-antd';
 import { MailOutlined } from '@ant-design/icons';
-import { useDispatch } from 'react-redux';
-import { authorization, logAction } from '../../store/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  authorization, logAction, isActive, isInactive,
+} from '../../store/actions';
 import validationSchema from './ValidationSchema';
 
 /* поля, которые отправляются на сервер */
@@ -14,17 +16,30 @@ const initialValues = {
 };
 
 const Login = () => {
+  const buttonReducer = useSelector((state) => state.buttonReducer);
   const dispatch = useDispatch();
   const history = useHistory();
 
   const onSubmit = async (values) => {
-    dispatch(logAction(values));
-    const response = await dispatch(authorization(values));
-    const { token } = response.data.user;
-    localStorage.setItem('token', `${token}`);
-    // сделал, чтобы при удалении стореджа и перезагрузке страницы не вылетало со страницы main
-    localStorage.setItem('user', JSON.stringify(response.data.user));
-    history.push('/');
+    try {
+      dispatch(isActive());
+      dispatch(logAction(values));
+      const response = await dispatch(authorization(values));
+      const { token } = response.data.user;
+      localStorage.setItem('token', `${token}`);
+      // сделал, чтобы при удалении стореджа и перезагрузке страницы не вылетало со страницы main
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+      history.push('/');
+    } catch (error) {
+      if (error.request.status === 422) {
+        dispatch(isInactive());
+        alert('Неверный логин или пароль');
+      }
+      if (error.request.status === 0) {
+        dispatch(isInactive());
+        alert(':( неполадки с сетью');
+      }
+    }
   };
 
   return (
@@ -61,7 +76,7 @@ const Login = () => {
           </Form.Item>
         </div>
         <div className="formButtonsContainer">
-          <SubmitButton htmlType="submit" disabled={false} size="large" className="button">
+          <SubmitButton disabled={buttonReducer} htmlType="submit" size="large" className="button">
             Войти
           </SubmitButton>
         </div>

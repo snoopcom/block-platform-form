@@ -10,47 +10,15 @@ const userReducer = handleActions(
   {},
 );
 
-// const username = handleActions(
-//   {
-//     [actions.setUserSuccess]: (state, { payload: login }) => {
-//       return login.user.username;
-//     },
-//     [actions.setSignUpSuccess]: (state, { payload: login }) => {
-//       return login.user.username;
-//     },
-//     [actions.setLoginSuccess]: (state, { payload: login }) => {
-//       return login.user.username;
-//     },
-//   },
-//   '',
-// );
-
-// const isAuth = handleActions(
-//   {
-//     [actions.setLoginSuccess]: () => {
-//       return true;
-//     },
-//     [actions.setSignUpSuccess]: () => {
-//       return true;
-//     },
-//     [actions.setUserSuccess]: () => {
-//       return true;
-//     },
-//     [actions.setLoginFailure]: () => {
-//       return false;
-//     },
-//     [actions.setSignUpFailure]: () => {
-//       return false;
-//     },
-//     [actions.setUserFailure]: () => {
-//       return false;
-//     },
-//   },
-//   false,
-// );
+const buttonReducer = handleActions(
+  {
+    [actions.isActive]: () => true,
+    [actions.isInactive]: () => false,
+  },
+  false,
+);
 
 export default combineReducers({
   userReducer,
-  // isAuth,
-  // username,
+  buttonReducer,
 });
