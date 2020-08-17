@@ -1,8 +1,8 @@
 {
-  "name": "form",
+  "name": "articles",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://snoopcom.github.io/block-platform-form",
+  "homepage": "http://snoopcom.github.io/blog-platform-articles",
   "dependencies": {
     "@ant-design/icons": "^4.1.0",
     "@testing-library/jest-dom": "^4.2.4",
@@ -29,6 +29,7 @@
     "redux": "^4.0.5",
     "redux-actions": "^2.6.5",
     "redux-thunk": "^2.3.0",
+    "styled-components": "^5.1.1",
     "yup": "^0.29.1"
   },
   "scripts": {
@@ -103,11 +104,11 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/snoopcom/form.git"
+    "url": "git+https://github.com/snoopcom/blog-platform-articles.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/snoopcom/form/issues"
+    "url": "https://github.com/snoopcom/blog-platform-articles/issues"
   }
 }
