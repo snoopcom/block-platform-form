@@ -1,8 +1,8 @@
 {
-  "name": "articles",
+  "name": "form",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://snoopcom.github.io/blog-platform-articles",
+  "homepage": "https://snoopcom.github.io/block-platform-form",
   "dependencies": {
     "@ant-design/icons": "^4.1.0",
     "@testing-library/jest-dom": "^4.2.4",
@@ -104,11 +104,11 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/snoopcom/blog-platform-articles.git"
+    "url": "git+https://github.com/snoopcom/form.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/snoopcom/blog-platform-articles/issues"
+    "url": "https://github.com/snoopcom/form/issues"
   }
 }
