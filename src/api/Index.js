@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import routes from '../routes';
 
 export const baseUrl = 'https://conduit.productionready.io/api/';
 
